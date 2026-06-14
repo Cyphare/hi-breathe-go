@@ -1,0 +1,33 @@
+<div class="page-title-banner">
+    <h2>Research Field</h2>
+</div>
+
+<main class="research-main">
+    <div class="container relative-container">
+        <div class="major-categories">
+            {{ range hugo.Data.research.categories }}
+            <div class="major-card" data-target="{{ .id }}" data-title="{{ .title }}">
+                <div class="major-img placeholder-gradient"></div>
+                <div class="major-title">{{ .titleHtml | safeHTML }}</div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+
+    <div id="dynamic-banner" class="page-title-banner" style="display: none; margin-top: 60px;">
+        <h2 id="dynamic-title">Research Field</h2>
+    </div>
+
+    <div class="container relative-container" id="project-grids-container" style="display: none;">
+        {{ range hugo.Data.research.categories }}
+        <div id="{{ .id }}" class="project-grid-section">
+            {{ range .projects }}
+            <div class="project-card">
+                <div class="proj-img placeholder-gradient"></div>
+                <div class="proj-label">{{ .label }}</div>
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</main>

@@ -1,0 +1,30 @@
+categories:
+  - id: "electrical"
+    title: "Electrical Engineering"
+    titleHtml: "Electrical<br>Engineering"
+    projects:
+      - label: "EE_Research_01"
+      - label: "EE_Research_02"
+      - label: "EE_Research_03"
+      - label: "EE_Research_04"
+      - label: "EE_Research_05"
+
+  - id: "information"
+    title: "Information Engineering"
+    titleHtml: "Information<br>Engineering"
+    projects:
+      - label: "IE_Research_01"
+      - label: "IE_Research_02"
+      - label: "IE_Research_03"
+      - label: "IE_Research_04"
+      - label: "IE_Research_05"
+
+  - id: "biomedical"
+    title: "Biomedical Engineering"
+    titleHtml: "Biomedical<br>Engineering"
+    projects:
+      - label: "Bio_Research_01"
+      - label: "Bio_Research_02"
+      - label: "Bio_Research_03"
+      - label: "Bio_Research_04"
+      - label: "Bio_Research_05"
