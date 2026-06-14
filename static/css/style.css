@@ -367,6 +367,11 @@ nav a:hover {
     grid-row: 3 / 4;
 }
 
+/* Reusable placeholder gradient for image slots without a real image */
+.placeholder-gradient {
+    background: linear-gradient(135deg, #e4e9f0 0%, #f7f8fa 50%, #d8e0e8 100%);
+}
+
 /* Adding some placeholder gradients to mimic your images */
 .img-1,
 .img-2,

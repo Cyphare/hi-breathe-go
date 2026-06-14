@@ -43,13 +43,35 @@
 
     <section class="activities">
         <div class="mosaic-grid">
-            <div class="mosaic-item img-1"></div>
-            <div class="mosaic-item img-2"></div>
+            {{ $activities := hugo.Data.about.activities }}
+            {{ $gridClasses := slice "img-1" "img-2" "img-3" "img-4" }}
+            {{ $idx := 0 }}
+
+            {{/* First two activity images (before the title card) */}}
+            {{ range first 2 $activities }}
+            {{ $class := index $gridClasses $idx }}
+            {{ if .image }}
+            <div class="mosaic-item {{ $class }}" style="background-image: url('/images/activities/{{ .image }}'); background-size: cover; background-position: center;"></div>
+            {{ else }}
+            <div class="mosaic-item {{ $class }}"></div>
+            {{ end }}
+            {{ $idx = add $idx 1 }}
+            {{ end }}
+
             <div class="mosaic-item text-center card activity-title-card">
                 <h3>Our<br>Activities</h3>
             </div>
-            <div class="mosaic-item img-3"></div>
-            <div class="mosaic-item img-4"></div>
+
+            {{/* Last two activity images (after the title card) */}}
+            {{ range after 2 $activities }}
+            {{ $class := index $gridClasses $idx }}
+            {{ if .image }}
+            <div class="mosaic-item {{ $class }}" style="background-image: url('/images/activities/{{ .image }}'); background-size: cover; background-position: center;"></div>
+            {{ else }}
+            <div class="mosaic-item {{ $class }}"></div>
+            {{ end }}
+            {{ $idx = add $idx 1 }}
+            {{ end }}
         </div>
     </section>
 </main>

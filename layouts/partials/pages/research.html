@@ -7,7 +7,11 @@
         <div class="major-categories">
             {{ range hugo.Data.research.categories }}
             <div class="major-card" data-target="{{ .id }}" data-title="{{ .title }}">
+                {{ if .image }}
+                <div class="major-img" style="background-image: url('/images/research/{{ .image }}'); background-size: cover; background-position: center;"></div>
+                {{ else }}
                 <div class="major-img placeholder-gradient"></div>
+                {{ end }}
                 <div class="major-title">{{ .titleHtml | safeHTML }}</div>
             </div>
             {{ end }}
@@ -23,7 +27,11 @@
         <div id="{{ .id }}" class="project-grid-section">
             {{ range .projects }}
             <div class="project-card">
+                {{ if .image }}
+                <div class="proj-img" style="background-image: url('/images/research/{{ .image }}'); background-size: cover; background-position: center;"></div>
+                {{ else }}
                 <div class="proj-img placeholder-gradient"></div>
+                {{ end }}
                 <div class="proj-label">{{ .label }}</div>
             </div>
             {{ end }}
