@@ -396,18 +396,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // If clicking the same card that's already open, collapse it
             if (currentActiveTarget === targetId) {
-                projectGrids.forEach((grid) => {
-                    grid.classList.remove('active-grid');
-                    grid.style.display = 'none';
-                    grid.hidden = true;
-                });
-
-                dynamicBanner.style.display = 'none';
-                gridsContainer.style.display = 'none';
+                const activeGrid = document.getElementById(targetId);
+                
+                if (activeGrid) {
+                    activeGrid.classList.remove('active-grid');
+                    activeGrid.classList.add('closing-grid');
+                    
+                    setTimeout(() => {
+                        activeGrid.classList.remove('closing-grid');
+                        activeGrid.style.display = 'none';
+                        activeGrid.hidden = true;
+                        
+                        dynamicBanner.style.display = 'none';
+                        gridsContainer.style.display = 'none';
+                        
+                        // Recalculate scrollable area after collapsing
+                        requestAnimationFrame(recalcMaxScrollY);
+                    }, 400);
+                }
+                
                 currentActiveTarget = null;
-
-                // Recalculate scrollable area after collapsing
-                requestAnimationFrame(recalcMaxScrollY);
                 return;
             }
 
@@ -416,12 +424,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             projectGrids.forEach((grid) => {
                 grid.classList.remove('active-grid');
+                grid.classList.remove('closing-grid');
                 grid.style.display = 'none';
                 grid.hidden = true;
             });
 
             const activeGrid = document.getElementById(targetId);
             if (activeGrid) {
+                activeGrid.classList.remove('closing-grid');
                 activeGrid.classList.add('active-grid');
                 activeGrid.style.display = 'grid';
                 activeGrid.hidden = false;

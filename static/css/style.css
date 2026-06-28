@@ -1072,12 +1072,17 @@ footer {
     /* Hidden by default via CSS */
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
-    animation: fadeIn 0.5s ease;
 }
 
 .project-grid-section.active-grid {
     display: grid;
     /* Applied via JavaScript */
+    animation: dragDown 0.4s ease forwards;
+}
+
+.project-grid-section.closing-grid {
+    display: grid;
+    animation: dragUp 0.4s ease forwards;
 }
 
 .project-card {
@@ -1110,15 +1115,27 @@ footer {
     color: var(--dark-blue);
 }
 
-@keyframes fadeIn {
+@keyframes dragDown {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(-20px);
     }
 
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes dragUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
     }
 }
 
