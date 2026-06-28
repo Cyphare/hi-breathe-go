@@ -1,21 +1,71 @@
-# Updating Website Content
+# Breathe Laboratory Website
 
-All of the website's dynamic content is managed through simple YAML files located in the `data/` directory. You do not need to write any code to add or update content.
+This website is built with Hugo and uses YAML files for managing its content.
 
-## How to add or edit content
+## How to add or update content
 
-1. Navigate to the `data` folder in the repository.
-2. Open the file corresponding to the section you want to update:
-   - `about.yaml` - Modify the about text or mission statement.
-   - `publications.yaml` - Add new papers or publications.
-   - `research.yaml` - Update research topics, projects, or news.
-   - `students.yaml` - Add or remove student profiles.
-   - `team.yaml` - Add or update team members.
-3. Copy an existing entry (block of text) from the file to use as a template.
-4. Paste the copied block where you want the new entry to appear, and replace the details with your new content.
-5. Save the file and commit your changes. The website will automatically update with the new information.
+All dynamic content is stored in the `data/` directory. You can edit the YAML files in this folder to update the website without touching the HTML or CSS.
 
-## Important rules for editing YAML
-- **Indentation matters**: Always use spaces (not tabs) to align your entries exactly like the existing ones.
-- **Special characters**: If your text contains colons (`:`), single quotes (`'`), or double quotes (`"`), wrap the entire text field in quotes (e.g., `title: "New Paper: A Study"`).
-- **Images**: When referencing an image, place the image file in the `static/` directory (e.g., `static/images/`) and reference it in the YAML file starting with `/` (e.g., `/images/my-photo.jpg`).
+### 1. News
+
+To add a new news article, edit `data/news.yaml`. Add a new entry to the top of the list following this format:
+
+```yaml
+- title: "Your News Title"
+  date: "YYYY-MM-DD"
+  image: "image-filename.png" # Place the image in static/images/news/
+  body: |
+    Your news content goes here. 
+    You can use multiple paragraphs.
+    
+    Like this.
+```
+
+### 2. Publications
+
+To add a new publication, edit `data/publications.yaml`:
+
+```yaml
+- title: "Publication Title"
+  authors: "Authors List"
+  journal: "Journal Name"
+  year: "YYYY"
+  pdf: "#link-to-pdf" # Optional link
+  doi: "#link-to-doi" # Optional link
+```
+
+### 3. Team Members
+
+To add a new team member, edit `data/team.yaml`:
+
+```yaml
+- name: "Short Name"
+  fullTitle: "Full Academic Title and Name"
+  role: "Role in Lab"
+  email: "email@example.com"
+  image: "filename.png" # Place the image in static/images/team/
+```
+
+### 4. Students
+
+To add a student, edit `data/students.yaml`:
+
+```yaml
+- name: "Full Name"
+  info: "Program or Role Information"
+  email: "email@example.com"
+```
+
+### 5. Research Projects
+
+To add or update research projects, edit `data/research.yaml`. The projects are grouped by category (Electrical, Information, Biomedical).
+
+Find the appropriate category and add a new project under its `projects:` list:
+
+```yaml
+      - label: "Project Name"
+        image: "project-image.png" # Place the image in static/images/research/
+```
+
+### Images
+Make sure to put any new images in their corresponding directories inside `static/images/` (e.g., `static/images/news/`, `static/images/team/`, `static/images/research/`).
